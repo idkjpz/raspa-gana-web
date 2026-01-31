@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspadita Ganadora - Duende de la Suerte</title>
+    <meta name="description"
+        content="Raspa y gana con el Duende de la Suerte. Descubre tu número y llévate un premio increíble.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="enhancements.css">
+    <link rel="stylesheet" href="countdown.css">
+</head>
+
+<body>
+    <div class="background-container">
+        <div class="floating-elements">
+            <div class="clover clover-1">🍀</div>
+            <div class="clover clover-2">🍀</div>
+            <div class="clover clover-3">🍀</div>
+            <div class="butterfly butterfly-1">🦋</div>
+            <div class="butterfly butterfly-2">🦋</div>
+            <div class="coin coin-1">🪙</div>
+            <div class="coin coin-2">🪙</div>
+            <div class="coin coin-3">🪙</div>
+        </div>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <button class="music-toggle" id="musicToggle" title="Música de fondo">
+        🔊
+    </button>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay active" id="registrationModal">
+        <div class="modal-content registration-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🍀 BIENVENIDO 🍀</h2>
+                <p class="subtitle">Ingresa tu usuario para participar</p>
+            </div>
+            <form class="registration-form" id="registrationForm">
+                <div class="form-group">
+                    <label for="userName">Usuario</label>
+                    <input type="text" id="userName" name="userName" required placeholder="Ingresa tu usuario"
+                        autocomplete="off">
+                </div>
+                <button type="submit" class="modal-button">
+                    JUGAR AHORA
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-line">RASPADITA</span>
+                <span class="title-line">GANADORA</span>
+            </h1>
+        </header>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-banner" id="countdownBanner">
+            <div class="countdown-icon">⏰</div>
+            <div class="countdown-content">
+                <div class="countdown-title">¡PROMOCIÓN POR TIEMPO LIMITADO!</div>
+                <div class="countdown-timer" id="countdownTimer">
+                    Cargando...
+                </div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="preview-text" id="previewText">
+                ✨ Hay un premio esperándote... ✨
+            </div>
+
+            <div class="scratch-grid" id="scratchGrid">
+                <!-- Las celdas se generarán dinámicamente -->
+            </div>
+
+            <div class="progress-indicator" id="progressIndicator">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Raspá para descubrir tu premio</div>
+            </div>
+
+            <div class="leprechaun-container">
+                <div class="leprechaun">🍀</div>
+                <div class="message-bubble">
+                    <p class="instruction-text">
+                        CON TU CARGA,<br>
+                        RASPÁ UNA TARJETA<br>
+                        Y LLEVATE UN PREMIO
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <button class="reset-button" id="resetButton">
+            <span class="button-icon">🏆</span>
+            VER MI PREMIO
+        </button>
+    </div>
+
+    <!-- Modal de Premio -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content prize-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🎉 ¡FELICITACIONES! 🎉</h2>
+                <h3 class="motivational-message" id="motivationalMessage"></h3>
+            </div>
+            <div class="modal-body">
+                <div class="prize-icon">🏆</div>
+                <div class="user-info">
+                    <p class="user-name" id="winnerName"></p>
+                </div>
+                <div class="prize-box">
+                    <p class="prize-label">TU PREMIO:</p>
+                    <p class="prize-amount">BONO DEL 100%</p>
+                    <p class="prize-number">Número ganador: <span id="prizeNumber"></span></p>
+                </div>
+                <div class="claim-instructions">
+                    <p class="instruction-title">📸 PARA RECLAMAR TU PREMIO:</p>
+                    <ol class="instruction-list">
+                        <li>Toma una captura de pantalla de este mensaje</li>
+                        <li>Envíala por WhatsApp</li>
+                        <li>¡Recibe tu bono del 100%!</li>
+                    </ol>
+                </div>
+                <div class="confetti-container" id="confettiContainer"></div>
+            </div>
+            <button class="modal-button share-button" id="shareButton">
+                <span class="whatsapp-icon">📱</span>
+                COMPARTIR EN WHATSAPP
+            </button>
+            <button class="modal-button" id="modalCloseButton">
+                CERRAR
+            </button>
+        </div>
+    </div>
+
+    <script src="countdown.js"></script>
+    <script src="enhancements.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

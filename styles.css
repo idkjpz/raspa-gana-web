@@ -1,0 +1,1140 @@
+:root {
+    --primary-gold: #FFD700;
+    --secondary-gold: #FFA500;
+    --dark-gold: #B8860B;
+    --green-primary: #2ECC71;
+    --green-dark: #27AE60;
+    --green-light: #58D68D;
+    --brown-pot: #8B4513;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    --glow-gold: 0 0 20px rgba(255, 215, 0, 0.6);
+    --whatsapp-green: #25D366;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mobile First - Base Styles */
+body {
+    font-family: 'Fredoka', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #1e5128 0%, #2d6a4f 50%, #40916c 100%);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-elements {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.clover,
+.butterfly,
+.coin {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    animation: float 6s ease-in-out infinite;
+}
+
+.clover-1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.clover-2 {
+    top: 60%;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.clover-3 {
+    top: 80%;
+    left: 15%;
+    animation-delay: 4s;
+}
+
+.butterfly-1 {
+    top: 20%;
+    right: 15%;
+    animation: flutter 4s ease-in-out infinite;
+}
+
+.butterfly-2 {
+    top: 70%;
+    right: 70%;
+    animation: flutter 5s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.coin-1 {
+    top: 30%;
+    left: 5%;
+    animation: spin 8s linear infinite;
+}
+
+.coin-2 {
+    top: 50%;
+    right: 10%;
+    animation: spin 10s linear infinite;
+    animation-delay: 3s;
+}
+
+.coin-3 {
+    top: 15%;
+    left: 50%;
+    animation: spin 9s linear infinite;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+@keyframes flutter {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(15px, -15px) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(0, -30px) rotate(-5deg);
+    }
+
+    75% {
+        transform: translate(-15px, -15px) rotate(5deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    margin-top: 3rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.title-line {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    text-shadow:
+        2px 2px 0 var(--dark-gold),
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff,
+        3px 3px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+    }
+
+    50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+}
+
+.game-container {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.3) 0%, rgba(39, 174, 96, 0.3) 100%);
+    border-radius: 20px;
+    padding: 1.25rem;
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.scratch-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.scratch-card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    touch-action: none;
+}
+
+.scratch-card:active {
+    transform: scale(0.98);
+}
+
+.scratch-card.scratched {
+    animation: revealPulse 0.6s ease-out;
+}
+
+@keyframes revealPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pot-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #D2691E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--dark-gold);
+}
+
+.pot-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+.hidden-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: var(--text-shadow);
+    z-index: 1;
+}
+
+.scratch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.leprechaun-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.leprechaun {
+    font-size: 3.5rem;
+    animation: bounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.message-bubble {
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+    padding: 1rem 1.25rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border: 2px solid var(--dark-gold);
+    width: 100%;
+    max-width: 280px;
+}
+
+.message-bubble::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid var(--primary-gold);
+}
+
+.instruction-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: var(--text-shadow);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.reset-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem auto 0;
+    padding: 0.875rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-shadow: var(--text-shadow);
+    touch-action: manipulation;
+}
+
+.reset-button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.button-icon {
+    font-size: 1.3rem;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Modal Styles - Mobile First */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    border-radius: 20px;
+    padding: 1.5rem;
+    max-width: 100%;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    border: 4px solid var(--primary-gold);
+    position: relative;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+    animation: modalBounce 0.6s ease-out;
+}
+
+@keyframes modalBounce {
+    0% {
+        transform: scale(0.7);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: titleShake 0.5s ease-in-out;
+}
+
+@keyframes titleShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+.modal-body {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.prize-icon {
+    font-size: 4rem;
+    margin-bottom: 0.75rem;
+    animation: prizeRotate 1s ease-in-out infinite;
+}
+
+@keyframes prizeRotate {
+
+    0%,
+    100% {
+        transform: rotate(-10deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(10deg) scale(1.08);
+    }
+}
+
+/* Registration Modal Styles */
+.registration-modal {
+    max-width: 400px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+.registration-form {
+    margin-top: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.4rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    font-size: 1rem;
+    font-family: 'Fredoka', sans-serif;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+/* Prize Modal Enhancements */
+.prize-modal {
+    max-width: 450px;
+}
+
+.user-info {
+    margin-bottom: 0.75rem;
+}
+
+.user-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.prize-box {
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+    padding: 1.25rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.prize-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    text-shadow: var(--text-shadow);
+}
+
+.prize-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.4rem;
+    letter-spacing: 1px;
+}
+
+.prize-box .prize-number {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.prize-box .prize-number span {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.claim-instructions {
+    background: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    border: 2px solid var(--green-primary);
+}
+
+.instruction-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green-primary);
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.instruction-list {
+    text-align: left;
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+.instruction-list li {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.instruction-list li:last-child {
+    margin-bottom: 0;
+}
+
+.modal-button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-shadow: var(--text-shadow);
+    touch-action: manipulation;
+}
+
+.modal-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-gold);
+    top: -10px;
+    animation: confettiFall 3s linear forwards;
+}
+
+/* Enhanced Particle Effects */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.coin-particle {
+    font-size: 2rem;
+    animation: coinFall 2s ease-in forwards;
+}
+
+@keyframes coinFall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.star-particle {
+    font-size: 1.5rem;
+    animation: starTwinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1.3) rotate(180deg);
+    }
+}
+
+.ray-particle {
+    position: absolute;
+    width: 4px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--primary-gold), transparent);
+    animation: rayExpand 1s ease-out forwards;
+    transform-origin: top center;
+}
+
+@keyframes rayExpand {
+    0% {
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        height: 150px;
+        opacity: 0;
+    }
+}
+
+/* Share Button */
+.share-button {
+    background: linear-gradient(135deg, var(--whatsapp-green) 0%, #1ea952 100%);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.share-button:active {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #1ea952 0%, var(--whatsapp-green) 100%);
+}
+
+.whatsapp-icon {
+    font-size: 1.3rem;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(600px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Tablet Styles - 600px and up */
+@media (min-width: 600px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .title-line {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+    }
+
+    .game-container {
+        border-radius: 25px;
+        padding: 1.75rem;
+        border: 3px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .scratch-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .scratch-card {
+        border-radius: 18px;
+    }
+
+    .scratch-card:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), var(--glow-gold);
+    }
+
+    .pot-icon {
+        font-size: 3.5rem;
+    }
+
+    .hidden-number {
+        font-size: 4.5rem;
+    }
+
+    .leprechaun-container {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .leprechaun {
+        font-size: 5rem;
+    }
+
+    .message-bubble {
+        padding: 1.25rem 1.75rem;
+        max-width: none;
+    }
+
+    .message-bubble::before {
+        left: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-right: 12px solid var(--primary-gold);
+        border-left: none;
+    }
+
+    .instruction-text {
+        font-size: 1rem;
+    }
+
+    .reset-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.3rem;
+    }
+
+    .reset-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, var(--green-light) 0%, var(--green-primary) 100%);
+    }
+
+    .modal-content {
+        padding: 2rem;
+        border-radius: 25px;
+        border: 5px solid var(--primary-gold);
+    }
+
+    .modal-title {
+        font-size: 1.85rem;
+    }
+
+    .prize-icon {
+        font-size: 5.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .user-name {
+        font-size: 1.3rem;
+    }
+
+    .prize-box {
+        padding: 1.5rem;
+        border-radius: 18px;
+        margin: 1.25rem 0;
+    }
+
+    .prize-label {
+        font-size: 1rem;
+    }
+
+    .prize-amount {
+        font-size: 2.3rem;
+        letter-spacing: 2px;
+    }
+
+    .prize-box .prize-number {
+        font-size: 1.05rem;
+    }
+
+    .prize-box .prize-number span {
+        font-size: 1.7rem;
+    }
+
+    .claim-instructions {
+        padding: 1.4rem;
+        border-radius: 14px;
+        margin-top: 1.25rem;
+    }
+
+    .instruction-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .instruction-list {
+        padding-left: 1.4rem;
+    }
+
+    .instruction-list li {
+        font-size: 0.95rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .modal-button {
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+    }
+
+    .modal-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, var(--green-light) 0%, var(--green-primary) 100%);
+    }
+
+    .confetti {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Desktop Styles - 800px and up */
+@media (min-width: 800px) {
+    .container {
+        max-width: 800px;
+        padding: 2rem 1rem;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .title-line {
+        font-size: 4.5rem;
+    }
+
+    .game-container {
+        border-radius: 30px;
+        padding: 2rem;
+    }
+
+    .scratch-grid {
+        margin-bottom: 2rem;
+    }
+
+    .scratch-card {
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .pot-background {
+        border: 4px solid var(--dark-gold);
+    }
+
+    .pot-icon {
+        font-size: 4rem;
+    }
+
+    .hidden-number {
+        font-size: 5rem;
+    }
+
+    .leprechaun {
+        font-size: 6rem;
+    }
+
+    .message-bubble {
+        padding: 1.5rem 2rem;
+        border-radius: 20px;
+        border: 3px solid var(--dark-gold);
+    }
+
+    .message-bubble::before {
+        left: -15px;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid var(--primary-gold);
+    }
+
+    .instruction-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .reset-button {
+        margin: 2rem auto 0;
+    }
+
+    .button-icon {
+        font-size: 1.5rem;
+    }
+
+    .modal-content {
+        padding: 2.5rem;
+        border-radius: 30px;
+        max-width: 500px;
+    }
+
+    .modal-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-body {
+        margin-bottom: 2rem;
+    }
+
+    .prize-icon {
+        font-size: 6rem;
+    }
+
+    .prize-box {
+        padding: 1.5rem;
+        border-radius: 20px;
+        margin: 1.5rem 0;
+    }
+
+    .prize-amount {
+        font-size: 2.5rem;
+    }
+
+    .prize-box .prize-number {
+        font-size: 1.1rem;
+    }
+
+    .prize-box .prize-number span {
+        font-size: 1.8rem;
+    }
+
+    .claim-instructions {
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin-top: 1.5rem;
+    }
+
+    .instruction-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .instruction-list {
+        padding-left: 1.5rem;
+    }
+
+    .instruction-list li {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .modal-button {
+        padding: 1rem 2rem;
+        font-size: 1.3rem;
+    }
+
+    .registration-modal {
+        max-width: 450px;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .registration-form {
+        margin-top: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group input {
+        padding: 0.875rem 1rem;
+    }
+
+    .prize-modal {
+        max-width: 550px;
+    }
+
+    .user-info {
+        margin-bottom: 1rem;
+    }
+
+    .clover,
+    .butterfly,
+    .coin {
+        font-size: 2rem;
+        opacity: 0.6;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-30px) rotate(10deg);
+        }
+    }
+
+    @keyframes flutter {
+
+        0%,
+        100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        25% {
+            transform: translate(20px, -20px) rotate(5deg);
+        }
+
+        50% {
+            transform: translate(0, -40px) rotate(-5deg);
+        }
+
+        75% {
+            transform: translate(-20px, -20px) rotate(5deg);
+        }
+    }
+}
