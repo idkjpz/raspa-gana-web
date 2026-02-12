@@ -137,8 +137,8 @@ function toggleMusic() {
 
 // Check for existing user on load
 function checkExistingUser() {
-    const savedUser = localStorage.getItem('raspadita_user');
-    const savedPrize = localStorage.getItem('raspadita_prize');
+    const savedUser = localStorage.getItem('raspadita_user_v2');
+    const savedPrize = localStorage.getItem('raspadita_prize_v2');
 
     if (savedUser) {
         gameState.userData = { name: savedUser };
@@ -182,7 +182,7 @@ registrationForm.addEventListener('submit', (e) => {
     const userName = formData.get('userName').trim();
 
     if (userName) {
-        localStorage.setItem('raspadita_user', userName);
+        localStorage.setItem('raspadita_user_v2', userName);
         gameState.userData = { name: userName };
 
         registrationModal.classList.remove('active');
@@ -348,7 +348,7 @@ function checkScratchProgress(ctx, canvas, card, number) {
 
 // Show win modal with enhanced effects
 function showWinModal(number) {
-    localStorage.setItem('raspadita_prize', number.toString());
+    localStorage.setItem('raspadita_prize_v2', number.toString());
 
     if (sounds.win) {
         sounds.win();
@@ -442,7 +442,7 @@ function celebrateWin() {
 // WhatsApp Share Function
 function shareOnWhatsApp() {
     const userName = gameState.userData.name;
-    const prizeNumber = localStorage.getItem('raspadita_prize');
+    const prizeNumber = localStorage.getItem('raspadita_prize_v2');
     const message = `🎉 ¡Gané un Bono del 100% en Raspadita Ganadora! 🍀\n\nMi número ganador: ${prizeNumber}\n\n`;
 
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
@@ -456,7 +456,7 @@ function closeModal() {
 
 // Event Listeners
 resetButton.addEventListener('click', () => {
-    const savedPrize = localStorage.getItem('raspadita_prize');
+    const savedPrize = localStorage.getItem('raspadita_prize_v2');
     if (savedPrize) {
         showPreviousPrize(parseInt(savedPrize));
     } else {
