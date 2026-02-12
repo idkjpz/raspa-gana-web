@@ -1,5 +1,5 @@
 // Countdown Timer - Ends January 31, 2026 at 1:00 AM
-const endDate = new Date('2026-02-25T01:30:00-03:00'); // Argentina timezone
+const endDate = new Date('2026-02-12T01:30:00-03:00'); // Argentina timezone
 
 function updateCountdown() {
     const now = new Date();
