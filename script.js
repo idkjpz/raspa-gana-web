@@ -250,19 +250,28 @@ function createScratchCard(number, index) {
 // Setup scratch functionality
 function setupScratchCard(canvas, card, number) {
     const ctx = canvas.getContext('2d');
-    const rect = canvas.getBoundingClientRect();
 
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    // Wait for the next frame to ensure the element is fully rendered
+    setTimeout(() => {
+        const rect = canvas.getBoundingClientRect();
 
-    // Draw scratch overlay
-    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, '#8B4513');
-    gradient.addColorStop(0.5, '#A0522D');
-    gradient.addColorStop(1, '#D2691E');
+        // Set canvas dimensions with device pixel ratio for better quality
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
 
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Scale the context to match device pixel ratio
+        ctx.scale(dpr, dpr);
+
+        // Draw scratch overlay
+        const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+        gradient.addColorStop(0, '#8B4513');
+        gradient.addColorStop(0.5, '#A0522D');
+        gradient.addColorStop(1, '#D2691E');
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, rect.width, rect.height);
+    }, 0);
 
     let isScratching = false;
 
@@ -281,10 +290,10 @@ function setupScratchCard(canvas, card, number) {
             lastSoundTime = now;
         }
 
-        // Erase scratch area
+        // Erase scratch area (using CSS coordinates, not canvas coordinates)
         ctx.globalCompositeOperation = 'destination-out';
         ctx.beginPath();
-        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.arc(x, y, 25, 0, Math.PI * 2);
         ctx.fill();
 
         // Check if enough is scratched
